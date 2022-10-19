@@ -1,0 +1,34 @@
+@hostname = localhost
+@port = 3000
+@host = http://{{hostname}}:{{port}}
+@contentType = application/json
+
+### Create User
+POST {{host}}/auth/signup
+Content-Type: {{contentType}}
+
+{
+  "email": "test@domain.com",
+  "password": "password"
+}
+
+### FindOne user
+GET {{host}}/auth/5
+
+### Find all user
+GET {{host}}/auth
+
+### Find all users query string email
+GET {{host}}/auth?email=test@domain.com
+
+###
+DELETE {{host}}/auth/2
+
+###
+PATCH {{host}}/auth/3
+Content-Type: application/json
+
+{
+  "email": "updated@domain.com",
+  "password": "updated"
+}
